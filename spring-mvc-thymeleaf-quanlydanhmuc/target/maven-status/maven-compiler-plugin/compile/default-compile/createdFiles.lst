@@ -1,0 +1,8 @@
+com\laptrinhjavaweb\controller\CustomerController.class
+com\laptrinhjavaweb\config\PersistenceJPAConfig.class
+com\laptrinhjavaweb\repository\CustomerRepository.class
+com\laptrinhjavaweb\service\CustomerService.class
+com\laptrinhjavaweb\config\MvcWebConfig.class
+com\laptrinhjavaweb\config\MvcWebApplicationInitializer.class
+com\laptrinhjavaweb\controller\HelloController.class
+com\laptrinhjavaweb\model\Customer.class
