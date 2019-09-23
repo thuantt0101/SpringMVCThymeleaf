@@ -56,6 +56,8 @@ public class PersistenceJPAConfig {
 				env.getProperty("hibernate.cache.use_second_level_cache"));
 		hibernateProperties.setProperty("hibernate.cache.use_query_cache",
 				env.getProperty("hibernate.cache.use_query_cache"));
+				
+		
 		
 		return hibernateProperties;
 	}
