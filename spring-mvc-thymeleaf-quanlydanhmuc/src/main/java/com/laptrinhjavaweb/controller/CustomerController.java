@@ -34,6 +34,7 @@ public class CustomerController {
 	@GetMapping("/showForm")
 	public String showFormForAdd(Model theModel) {
 		Customer theCustomer = new Customer();
+		theCustomer.setId(-1);
 		theModel.addAttribute("customer", theCustomer);
 		return "customer-form";
 	}
@@ -47,10 +48,22 @@ public class CustomerController {
 		model.addAttribute("customer", customerDTO);
 		return "customer-form";
 	}
-
+	
+	
+	
+	//edit or new
 	@PostMapping("/saveCustomer")
 	public String saveCustomer(@ModelAttribute("customer") CustomerDTO theCustomer) {
+		System.out.println("saveCustomer is called");
 		theCustomer = customerService.save(theCustomer);
+		return "redirect:/customer/list";
+	}
+	
+	//delete
+	@GetMapping("/deleteCustomer/{id}")
+	public String deleteCustomer(@PathVariable("id") int theId,CustomerDTO customerDTO) {
+		System.out.println("deleteCustomer is called");
+		customerDTO = customerService.deleteById(theId);
 		return "redirect:/customer/list";
 	}
 }

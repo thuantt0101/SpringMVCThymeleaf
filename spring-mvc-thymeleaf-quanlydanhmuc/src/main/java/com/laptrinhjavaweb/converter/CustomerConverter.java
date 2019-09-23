@@ -10,6 +10,9 @@ public class CustomerConverter {
 
 	public Customer toEntity(CustomerDTO customerDTO) {
 		Customer customer = new Customer();
+		if(customerDTO.getId()!=-1) {
+			customer.setId(customerDTO.getId());
+		}
 		customer.setFirstName(customerDTO.getFirstName());
 		customer.setLastName(customerDTO.getLastName());
 		customer.setEmail(customerDTO.getEmail());

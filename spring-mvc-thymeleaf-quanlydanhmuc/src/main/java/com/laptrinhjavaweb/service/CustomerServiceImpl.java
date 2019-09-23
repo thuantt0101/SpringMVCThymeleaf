@@ -53,7 +53,6 @@ public class CustomerServiceImpl implements CustomerService {
 		CustomerDTO customerDTO = new CustomerDTO();
 		Customer customer = new Customer();
 
-		
 		customer = customerRepository.getOne(id);
 
 		customerDTO = customerConverter.toDTO(customer);
@@ -62,6 +61,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDTO deleteById(Integer id) {
-		return null;
+		CustomerDTO customerDTO = new CustomerDTO();
+		Customer customer = new Customer();
+		customer = customerRepository.getOne(id);
+		customerDTO = customerConverter.toDTO(customer);
+		customerRepository.delete(customer);
+		return customerDTO;
+
 	}
 }

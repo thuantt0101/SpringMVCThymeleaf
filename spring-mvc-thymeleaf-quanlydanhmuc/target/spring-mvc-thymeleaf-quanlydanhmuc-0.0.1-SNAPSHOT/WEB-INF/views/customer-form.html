@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>customer list</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Edit</title>
+
+
+<!-- Bootstrap core CSS -->
+<link href="../resources/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/resources/css/bootstrap.css}" />
+</head>
+<body>
+	<div class="container">
+
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3 class="panel-title">Customer form</h3>
+			</div>
+			<div class="panel-body">
+
+				<form action="#" th:action="@{/saveCustomer}" th:object="${customer}" method="POST">
+
+							
+					<div class="form-group">
+						<label>First name</label> <input type="text"
+							class="form-control" th:field="*{firstName}" placeholder="First name"/>
+					</div>
+					
+					<div class="form-group">
+						<label>last name</label> <input type="text"
+							class="form-control" th:field="*{lastName}" placeholder="last name"/>
+					</div>
+					
+					<div class="form-group">
+						<label>email</label> <input type="text"
+							class="form-control" th:field="*{email}" placeholder="email"/>
+					</div>
+					
+
+
+
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/resources/js/jquery-3.2.1.min.js"
+		th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
+	<script src="../resources/js/bootstrap.js"
+		th:href="@{/resources/js/bootstrap.js}"></script>
+</body>
+</html>
