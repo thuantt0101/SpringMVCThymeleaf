@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+header {
+	background-color: #666;
+	padding: 5px;
+	text-align: center;
+	font-size: 35px;
+	color: white;
+}
+
+section:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.mt-20{
+	margin-top: 20px;
+}
+
+@media (min-width: 767px) {
+   .navbar-nav .dropdown-menu .caret { transform: rotate(-90deg);}
+}

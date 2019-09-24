@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{../views/layout/main-layout :: main-fragment(  
+                                                ~{::title},                                                
+                                                ~{:: #home-header},
+                                                 ~{:: #home-nav},  
+                                                  ~{:: #home-main-content},
+                                                  ~{:: #home-footer}                          
+                                               )}">
+<head>
+<meta charset="UTF-8">
+<title>customer list</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+<!-- Bootstrap core CSS -->
+
+<link href="../resources/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/resources/css/bootstrap.css}" />
+</head>
+<body>
+
+
+	<div id="home-header">master management</div>
+	<div id="home-nav"
+		th:replace="~{../views/fragments/app-fragments :: nav-advance}">Home
+		Nav</div>
+
+	<div class="container" id="home-main-content">
+		<div class="row">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>first name</th>
+						<th>last name</th>
+						<th>email</th>
+						<th>edit</th>
+						<th>delete</th>
+					</tr>
+				</thead>
+
+
+				<tbody>
+					<tr th:each="customer: ${customers}">
+						<td th:text="${customer.id}" />
+						<td th:text="${customer.firstName}" />
+						<td th:text="${customer.lastName}" />
+						<td th:text="${customer.email}" />
+						<td><a
+							th:href="@{/customer/updateForm/{id}(id=${customer.id})}">edit</a>
+						</td>
+						<td><a
+							th:href="@{/customer/deleteCustomer/{id}(id=${customer.id})}">delete</a>
+						</td>
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+
+		<div class="row">
+			<a class="btn btn-warning" th:href="@{/customer/showForm}">Thêm</a>
+		</div>
+
+	</div>
+
+	<div class="row mt-10" id="home-footer" 
+		th:replace="~{/fragments/app-fragments :: copyright}">Footer</div>
+
+
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="../resources/js/jquery-3.2.1.min.js"
+		th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
+	<script src="../resources/js/bootstrap.js"
+		th:href="@{/resources/js/bootstrap.js}"></script>
+
+</body>
+</html>

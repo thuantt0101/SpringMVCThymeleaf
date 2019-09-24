@@ -28,7 +28,7 @@ public class CustomerController {
 		System.out.println("customer/list is called");
 		List<CustomerDTO> listCustomerDTO = customerService.findAll();
 		model.addAttribute("customers", listCustomerDTO);
-		return "list-customer";
+		return "danhmuc/customer/list-customer";
 	}
 
 	@GetMapping("/showForm")
@@ -36,7 +36,7 @@ public class CustomerController {
 		Customer theCustomer = new Customer();
 		theCustomer.setId(-1);
 		theModel.addAttribute("customer", theCustomer);
-		return "customer-form";
+		return "danhmuc/customer/customer-form";
 	}
 
 	@GetMapping("/updateForm/{id}")
@@ -46,7 +46,7 @@ public class CustomerController {
 		CustomerDTO customerDTO = new CustomerDTO();
 		customerDTO = customerService.findById(theId);
 		model.addAttribute("customer", customerDTO);
-		return "customer-form";
+		return "danhmuc/customer/customer-form";
 	}
 	
 	

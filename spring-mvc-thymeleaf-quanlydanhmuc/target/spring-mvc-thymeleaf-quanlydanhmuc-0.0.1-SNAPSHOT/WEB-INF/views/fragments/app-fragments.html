@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>App Fragments</title>
+</head>
+<body>
+
+	<!-- Default Navigator -->
+	<nav class="navbar navbar-inverse" th:fragment="nav-advance">
+	<div class="container-fluid">		
+		<ul class="nav navbar-nav">
+			<li class="active">
+				<a th:href="@{/}">Home</a>
+			</li>
+			<li class="active">
+				<a th:href="@{/customer/list}">customers</a>
+			</li>			
+		</ul>
+	</div>
+</nav>
+	
+
+	<ul th:fragment="nav-default">
+		<li><a th:href="@{/}">Home</a></li>
+		<li><a th:href="@{/customer/list}">Customers</a></li>
+		<li><a th:href="@{/about}">About</a></li>
+	</ul>
+
+	<!-- Admin Navigator -->
+
+	<ul th:fragment="nav-admin">
+		<li><a th:href="@{/admin/products}">Product Management</a></li>
+		<li><a th:href="@{/admin/orders}">Order Management</a></li>
+	</ul>
+
+
+
+	<div th:fragment="copyright">&copy; com.tranthanhthuan.quan-ly-danh-muc</div>
+
+</body>
+</html>
