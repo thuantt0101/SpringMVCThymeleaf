@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{../views/layout/main-layout :: main-fragment(  
-                                                ~{::title},                                                
-                                                ~{:: #home-header},
+                                                ~{::title},                                                                                               
                                                  ~{:: #home-nav},  
                                                   ~{:: #home-main-content},
-                                                  ~{:: #home-footer}                          
+                                                  ~{:: #home-footer} ,
+                                                  ~{:: #css-resources} ,
+                                                  ~{:: #js-resources} ,                         
                                                )}">
 <head>
 <meta charset="UTF-8">
@@ -15,10 +16,16 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 
-<!-- Bootstrap core CSS -->
+<th:block id="css-resources">
 
-<link href="../resources/css/bootstrap.css" rel="stylesheet"
-	th:href="@{/resources/css/bootstrap.css}" />
+	<link href="../resources/css/main.css" rel="stylesheet"
+		th:href="@{/resources/css/main.css}" />
+
+	<link href="../resources/css/bootstrap.css" rel="stylesheet"
+		th:href="@{/resources/css/bootstrap.css}" />
+</th:block>
+
+
 </head>
 <body>
 
@@ -26,56 +33,62 @@
 		th:replace="~{../views/fragments/app-fragments :: nav-advance-v2}">Home
 		Nav</div>
 
-	<div class="container" id="home-main-content">
-		<div class="row">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>id</th>
-						<th>first name</th>
-						<th>last name</th>
-						<th>email</th>
-						<th>edit</th>
-						<th>delete</th>
-					</tr>
-				</thead>
+	<div id="home-main-content">
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>first name</th>
+					<th>last name</th>
+					<th>email</th>
+					<th>edit</th>
+					<th>delete</th>
+				</tr>
+			</thead>
 
 
-				<tbody>
-					<tr th:each="customer: ${customers}">
-						<td th:text="${customer.id}" />
-						<td th:text="${customer.firstName}" />
-						<td th:text="${customer.lastName}" />
-						<td th:text="${customer.email}" />
-						<td><a
-							th:href="@{/customer/updateForm/{id}(id=${customer.id})}">edit</a>
-						</td>
-						<td><a
-							th:href="@{/customer/deleteCustomer/{id}(id=${customer.id})}">delete</a>
-						</td>
-					</tr>
-				</tbody>
+			<tbody>
+				<tr th:each="customer: ${customers}">
+					<td th:text="${customer.id}" />
+					<td th:text="${customer.firstName}" />
+					<td th:text="${customer.lastName}" />
+					<td th:text="${customer.email}" />
+					<td><a
+						th:href="@{/customer/updateForm/{id}(id=${customer.id})}">edit</a>
+					</td>
+					<td><a
+						th:href="@{/customer/deleteCustomer/{id}(id=${customer.id})}">delete</a>
+					</td>
+				</tr>
+			</tbody>
 
-			</table>
-		</div>
+		</table>
+	</div>
 
-		<div class="row">
-			<a class="btn btn-warning" th:href="@{/customer/showForm}">Thêm</a>
-		</div>
-
+	<div class="row">
+		<a class="btn btn-warning" th:href="@{/customer/showForm}">Thêm</a>
 	</div>
 
 	<div class="row mt-10" id="home-footer"
 		th:replace="~{/fragments/app-fragments :: copyright}">Footer</div>
 
 
-	<!-- Bootstrap core JavaScript
+	<th:block id="js-resources">
+
+		<!-- Bootstrap core JavaScript
 ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="../resources/js/jquery-3.2.1.min.js"
-		th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
-	<script src="../resources/js/bootstrap.js"
-		th:href="@{/resources/js/bootstrap.js}"></script>
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="../resources/js/jquery-3.2.1.min.js"
+			th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
+		<script src="../resources/js/bootstrap.js"
+			th:href="@{/resources/js/bootstrap.js}"></script>
+
+
+	</th:block>
+
+
+
 
 </body>
 </html>

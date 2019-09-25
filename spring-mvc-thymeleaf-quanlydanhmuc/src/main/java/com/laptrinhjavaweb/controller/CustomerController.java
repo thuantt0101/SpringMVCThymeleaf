@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.laptrinhjavaweb.dto.CustomerDTO;
+import com.laptrinhjavaweb.dto.RoleDTO;
 import com.laptrinhjavaweb.exception.ResourceNotFoundException;
 import com.laptrinhjavaweb.model.Customer;
 import com.laptrinhjavaweb.service.CustomerService;
+import com.laptrinhjavaweb.service.RoleService;
 
 @Controller
 @RequestMapping("customer")
@@ -22,12 +24,20 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private RoleService roleService;
+	
+	
 
 	@GetMapping("/list")
 	public String listCustomers(Model model) {
+		
 		System.out.println("customer/list is called");
+		List<RoleDTO> listRoleDTO =roleService.findAll();
 		List<CustomerDTO> listCustomerDTO = customerService.findAll();
 		model.addAttribute("customers", listCustomerDTO);
+		model.addAttribute("roles", listRoleDTO);
 		return "danhmuc/customer/list-customer";
 	}
 

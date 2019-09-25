@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	th:fragment="main-fragment(title,header,nav,mainContent,footer)">
+	th:fragment="main-fragment(title,nav,mainContent,footer,cssResource,jsResource)">
 <head>
 <meta charset="UTF-8">
 <title th:replace="${title}">Page 1 title</title>
@@ -8,50 +8,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-<!-- Bootstrap core CSS -->
+<!-- Bootstrap core CSS- -->
+<th:block th:replace="${cssResource} ?: ~{}"></th:block>
 
-<link href="../resources/css/main.css" rel="stylesheet"
-	th:href="@{/resources/css/main.css}" />
-
-<link href="../resources/css/bootstrap.css" rel="stylesheet"
-	th:href="@{/resources/css/bootstrap.css}" />
 </head>
 <body>
-	<header th:insert="${header} ?: ~{}">
-		<h2>Page 1</h2>
-	</header>
+	<div class="container">
 
-	<section>
+		<div class="row">
+			<nav th:insert="${nav} ?: ~{}">
+				<ul>
+					<li><a href="#">Page 1</a></li>
+					<li><a href="#">Page 2</a></li>
+				</ul>
+			</nav>
+		</div>
 
-		<nav th:insert="${nav} ?: ~{}">
-			<ul>
-				<li><a href="#">Page 1</a></li>
-				<li><a href="#">Page 2</a></li>
-			</ul>
-		</nav>
+		<div class="row pd-top-60" th:insert="${mainContent} ?: ~{}">
+			
+				<h1>Page 1</h1>
+				<p>Main content of Page 1</p>
+			
+		</div>
 
-		<article th:insert="${mainContent} ?: ~{}">
-			<h1>Page 1</h1>
-			<p>Main content of Page 1</p>
-		</article>
-	</section>
 
-	<footer th:insert="${footer} ?: ~{}">
-		<p>Footer</p>
-	</footer>
+		<div class="row">
+			<footer th:insert="${footer} ?: ~{}">
+				<p>Footer</p>
+			</footer>
 
-	<!-- Bootstrap core JavaScript
-================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="../resources/js/jquery-3.2.1.min.js"
-		th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
-	<script src="../resources/js/bootstrap.js"
-		th:href="@{/resources/js/bootstrap.js}"></script>
+		</div>
+
+
+	</div>
+
 
 	<script>
+		// Lấy đối tượng có id = id-button trong jQuery
+		// 	var object = $('#id-button');
+
+		// sự kiên onload trong jquery 
+		// 		$(document).ready(function(){ 
+		//     /*Nội dung bên trong*/
+		// });
+
+		// khi gặp những đoạn code nằm trong sự kiện onload thì tình biên dịch sẽ bỏ qua cho tới khi trang web load xong		
+
+		//var elements = $('.desc'): tìm tất cả các thẻ html có class ="desc"
+		//nếu bạn thực hiện thao tác gán (set) thì nó có tác dụng cho toàn bộ kết quả
+		//nếu bạn thực hiện thao tác lấy(get) thì nó có tác dụng cho kết quả đầu tiên.
+		//vì vậy trong trường hợp get vì vậy trong trường hợp get ta phải sử dụng vòng lặp trong từng phần tử.
+
+		// Truy vấn đối tượng : var element = $('.container');
+
+		// Gán CSS background màu đỏ
+		// $(element).css({
+		//     background : "red"
+		// });
+
 		$(document).ready(
 				function() {
 					$('.navbar a.dropdown-toggle').on(
+							//a.dropdown-toggle : thẻ a có class là dropdown-toggle ,.navbar : thẻ bao bộc bên ngoài là thẻ nav
 							'click',
 							function(e) {
 								var $el = $(this);
@@ -70,6 +88,10 @@
 							});
 				});
 	</script>
+
+	<!-- Bootstrap core CSS- -->
+	<th:block th:replace="${jsResource} ?: ~{}"></th:block>
+
 
 </body>
 </html>

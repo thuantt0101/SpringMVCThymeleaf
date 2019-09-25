@@ -10,14 +10,6 @@ header {
 	color: white;
 }
 
-article {
-	float: left;
-	padding: 20px;
-	width: 70%;
-	background-color: #f1f1f1;
-	height: 300px;
-}
-
 section:after {
 	content: "";
 	display: table;
@@ -41,6 +33,14 @@ nav ul {
     padding: 0;
 }
 
-.mt-10{
-	margin-top: 10px;
+.mt-30{
+	margin-top: 30px;
+}
+
+.pd-top-30{
+	padding-top: 30px;
+}
+
+@media (min-width: 767px) {
+   .navbar-nav .dropdown-menu .caret { transform: rotate(-90deg);}
 }

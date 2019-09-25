@@ -33,8 +33,12 @@ nav ul {
     padding: 0;
 }
 
-.mt-20{
-	margin-top: 20px;
+.mt-30{
+	margin-top: 30px;
+}
+
+.pd-top-60{
+	padding-top: 60px;
 }
 
 @media (min-width: 767px) {

@@ -1,35 +1,61 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	th:replace="~{layout/main-layout :: main-fragment(  
-                                                ~{::title},                                                
-                                                ~{:: #home-header},
+                                                ~{::title},                                                                                                
                                                  ~{:: #home-nav},  
                                                   ~{:: #home-main-content},
-                                                  ~{:: #home-footer}                          
+                                                  ~{:: #home-footer},
+                                                  ~{:: #css-resources} ,
+                                                  ~{:: #js-resources}                       
                                                )}">
 <!-- ~{:: selector} :tham số thứ nhất trong main-layout.html  ~{::title} nghĩa là mô tả vị trí của fragment title nằm trong template main-layout.html-->
 <!-- ~{:: selector} :tham số thứ hai trong main.layout.html  ~{::#home-header} nghĩa là mô tả vị trí của fragment home-header nằm trong template main-layout.html-->
+
 <head>
 <meta charset="UTF-8">
 <title>Home page</title>
+
+<th:block id="css-resources">
+
+	<link href="../resources/css/main.css" rel="stylesheet"
+	th:href="@{/resources/css/main.css}" />
+
+	<link href="../resources/css/bootstrap.css" rel="stylesheet"
+		th:href="@{/resources/css/bootstrap.css}" />
+</th:block>
+
+
 </head>
 <body>
 
-	<div id="home-header">master management</div>
+
+
+	<div id="home-nav"
+		th:replace="~{/fragments/app-fragments :: nav-advance-v2}">Home
+		Nav</div>
+
+	<div id="home-main-content">
+		<h2>Home content</h2>
+		<div>Content of Home Page</div>
+	</div>
+
+
+	<div id="home-footer"
+		th:replace="~{/fragments/app-fragments :: copyright}">Footer</div>
+		
+	<th:block id="js-resources">
 	
-	<div id="home-nav" th:replace="~{/fragments/app-fragments :: nav-advance-v1}">
-        Home Nav
-    </div>
-    
-     <div id="home-main-content">
-        <h2>Home content</h2>
-        <div>Content of Home Page</div>
-    </div>
-    
-         
-    <div id="home-footer" th:replace="~{/fragments/app-fragments :: copyright}">
-        Footer
-    </div>
 	
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="resources/js/jquery-3.2.1.min.js"
+		th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
+	<script src="resources/js/bootstrap.js"
+		th:href="@{/resources/js/bootstrap.js}"></script>
+	
+	</th:block>
+			
+
 </body>
 </html>
