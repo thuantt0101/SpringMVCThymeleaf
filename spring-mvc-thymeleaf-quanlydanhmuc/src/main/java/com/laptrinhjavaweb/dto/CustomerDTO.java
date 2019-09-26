@@ -1,8 +1,6 @@
 package com.laptrinhjavaweb.dto;
 
-public class CustomerDTO {
-
-	private int id;
+public class CustomerDTO extends BaseDTO<CustomerDTO> {
 
 	private String firstName;
 
@@ -14,20 +12,12 @@ public class CustomerDTO {
 
 	}
 
-	public CustomerDTO(int id, String firstName, String lastName, String email) {
+	public CustomerDTO(String firstName, String lastName, String email) {
 		super();
-		this.id = id;
+
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {

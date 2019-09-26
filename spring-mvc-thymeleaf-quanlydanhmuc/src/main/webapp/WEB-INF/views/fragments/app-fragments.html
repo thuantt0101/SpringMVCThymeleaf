@@ -40,7 +40,7 @@
 					</a>
 						<ul class="dropdown-menu">
 							<li th:each="role:${roles}">
-							<span th:unless="${role.parentRoleId ==null}">
+							<span th:if="${role.parentRoleId ==1}">
 								<a th:href="@{ ${role.controllerLink} }"
 									th:text="${role.roleName}"></a>
 									</span>

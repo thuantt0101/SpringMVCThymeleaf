@@ -6,7 +6,8 @@
                                                   ~{:: #home-main-content},
                                                   ~{:: #home-footer} ,
                                                   ~{:: #css-resources} ,
-                                                  ~{:: #js-resources} ,                         
+                                                  ~{:: #js-resources} , 
+                                                  ~{:: #search}                          
                                                )}">
 <head>
 <meta charset="UTF-8">
@@ -29,13 +30,17 @@
 </head>
 <body>
 
+	<div id="search">
+		<input type="search" id = "txtSearch" onkeyup="filter()"  class="form-control" value=""  title="searching customer" placeholder="searching...."/>
+	</div>
+
 	<div id="home-nav"
 		th:replace="~{../views/fragments/app-fragments :: nav-advance-v2}">Home
 		Nav</div>
 
 	<div id="home-main-content">
 
-		<table class="table table-hover">
+		<table class="table table-hover" id = "tblListData">
 			<thead>
 				<tr>
 					<th>id</th>
@@ -54,23 +59,20 @@
 					<td th:text="${customer.firstName}" />
 					<td th:text="${customer.lastName}" />
 					<td th:text="${customer.email}" />
-					<td><a
+					<td><a class="btn btn-warning"
 						th:href="@{/customer/updateForm/{id}(id=${customer.id})}">edit</a>
 					</td>
-					<td><a
+					<td><a class="btn btn-danger"
 						th:href="@{/customer/deleteCustomer/{id}(id=${customer.id})}">delete</a>
 					</td>
 				</tr>
 			</tbody>
-
 		</table>
+		<a class="btn btn-primary" th:href="@{/customer/showForm}">Thêm</a>
 	</div>
 
-	<div class="row">
-		<a class="btn btn-warning" th:href="@{/customer/showForm}">Thêm</a>
-	</div>
 
-	<div class="row mt-10" id="home-footer"
+	<div class="row" id="home-footer"
 		th:replace="~{/fragments/app-fragments :: copyright}">Footer</div>
 
 

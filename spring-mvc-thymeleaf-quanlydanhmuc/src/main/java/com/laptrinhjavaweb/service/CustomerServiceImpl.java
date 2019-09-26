@@ -20,6 +20,8 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerConverter customerConverter;
 
+	
+	
 	@Override
 	public CustomerDTO save(CustomerDTO customerDTO) {
 
@@ -31,7 +33,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	}
 
-	// works well
 	@Override
 	public List<CustomerDTO> findAll() {
 		List<CustomerDTO> listCustomerDTO = new ArrayList<>();
