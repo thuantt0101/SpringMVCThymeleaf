@@ -24,17 +24,15 @@ public class CustomerController {
 
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private RoleService roleService;
-	
-	
 
 	@GetMapping("/list")
 	public String listCustomers(Model model) {
-		
+
 		System.out.println("customer/list is called");
-		List<RoleDTO> listRoleDTO =roleService.findAll();
+		List<RoleDTO> listRoleDTO = roleService.findAll();
 		List<CustomerDTO> listCustomerDTO = customerService.findAll();
 		model.addAttribute("customers", listCustomerDTO);
 		model.addAttribute("roles", listRoleDTO);
@@ -50,7 +48,7 @@ public class CustomerController {
 	}
 
 	@GetMapping("/updateForm/{id}")
-	public String showFormForUpdate(@PathVariable("id") int theId, Model model) throws ResourceNotFoundException{
+	public String showFormForUpdate(@PathVariable("id") int theId, Model model) throws ResourceNotFoundException {
 		System.out.println("hello update form");
 		System.out.println("id is: " + theId);
 		CustomerDTO customerDTO = new CustomerDTO();
@@ -58,22 +56,31 @@ public class CustomerController {
 		model.addAttribute("customer", customerDTO);
 		return "danhmuc/customer/customer-form";
 	}
-	
-	
-	
-	//edit or new
+
+	// edit or new
 	@PostMapping("/saveCustomer")
 	public String saveCustomer(@ModelAttribute("customer") CustomerDTO theCustomer) {
+
+		System.out.println("=================================****************===================");
 		System.out.println("saveCustomer is called");
+		System.out.println(theCustomer.getBirthDay());
+
 		theCustomer = customerService.save(theCustomer);
 		return "redirect:/customer/list";
 	}
-	
-	//delete
+
+	// delete
 	@GetMapping("/deleteCustomer/{id}")
-	public String deleteCustomer(@PathVariable("id") int theId,CustomerDTO customerDTO) {
+	public String deleteCustomer(@PathVariable("id") int theId, CustomerDTO customerDTO) {
 		System.out.println("deleteCustomer is called");
 		customerDTO = customerService.deleteById(theId);
+		return "redirect:/customer/list";
+	}
+	
+	@PostMapping("/export")
+	public String toListCustomer(@ModelAttribute("customers") CustomerDTO  list ) {
+						
+		System.out.println("export is called");
 		return "redirect:/customer/list";
 	}
 }

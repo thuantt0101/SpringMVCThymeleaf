@@ -2,12 +2,9 @@
     box-sizing: border-box;
 }
 
-header {
-	background-color: #666;
-	padding: 5px;
-	text-align: center;
-	font-size: 35px;
-	color: white;
+.header {
+	background-color: #25AFF3;
+	
 }
 
 section:after {

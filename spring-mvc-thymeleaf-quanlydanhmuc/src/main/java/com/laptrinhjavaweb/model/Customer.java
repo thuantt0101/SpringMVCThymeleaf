@@ -1,10 +1,13 @@
 package com.laptrinhjavaweb.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Proxy(lazy = false)
 @Entity
@@ -19,6 +22,18 @@ public class Customer extends BaseEntity {
 
 	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name="birth_day")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate birthDay;
+
+	public LocalDate getBirthDay() {
+		return birthDay;
+	}
+
+	public void setBirthDay(LocalDate birthDay) {
+		this.birthDay = birthDay;
+	}
 
 	public String getFirstName() {
 		return firstName;

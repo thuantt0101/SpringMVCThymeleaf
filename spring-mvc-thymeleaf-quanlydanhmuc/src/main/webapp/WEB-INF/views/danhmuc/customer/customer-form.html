@@ -22,29 +22,36 @@
 			</div>
 			<div class="panel-body">
 
-				<form action="#" th:action="@{/customer/saveCustomer}" th:object="${customer}" method="POST">
+				<form action="#" th:action="@{/customer/saveCustomer}"
+					th:object="${customer}" method="POST">
 
 					<div class="form-group">
-						<label>id</label> <input type="text"
-							class="form-control" th:field="*{id}" placeholder="id" readonly/>
+						<label>id</label> <input type="text" class="form-control"
+							th:field="*{id}" placeholder="id" readonly />
 					</div>
-					
-							
+
+
 					<div class="form-group">
-						<label>First name</label> <input type="text"
-							class="form-control" th:field="*{firstName}" placeholder="First name"/>
+						<label>First name</label> <input type="text" class="form-control"
+							th:field="*{firstName}" placeholder="First name" />
 					</div>
-					
+
 					<div class="form-group">
-						<label>last name</label> <input type="text"
-							class="form-control" th:field="*{lastName}" placeholder="last name"/>
+						<label>last name</label> <input type="text" class="form-control"
+							th:field="*{lastName}" placeholder="last name" />
 					</div>
-					
+
 					<div class="form-group">
-						<label>email</label> <input type="text"
-							class="form-control" th:field="*{email}" placeholder="email"/>
+						<label>email</label> <input type="text" class="form-control"
+							th:field="*{email}" placeholder="email" />
 					</div>
-					
+
+					<div class="form-group">
+						<label>birthday</label> <input type="date" th:field="*{birthDay}"
+							class="form-control" title="" />
+					</div>
+
+
 
 
 

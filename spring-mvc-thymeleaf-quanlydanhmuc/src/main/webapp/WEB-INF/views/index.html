@@ -7,7 +7,8 @@
                                                   ~{:: #home-footer},
                                                   ~{:: #css-resources} ,
                                                   ~{:: #js-resources}  ,  
-                                                  ~{:: #search}                       
+                                                  ~{:: #search} ,
+                                                  ~{:: #export}                        
                                                )}">
 <!-- ~{:: selector} :tham số thứ nhất trong main-layout.html  ~{::title} nghĩa là mô tả vị trí của fragment title nằm trong template main-layout.html-->
 <!-- ~{:: selector} :tham số thứ hai trong main.layout.html  ~{::#home-header} nghĩa là mô tả vị trí của fragment home-header nằm trong template main-layout.html-->
@@ -19,7 +20,7 @@
 <th:block id="css-resources">
 
 	<link href="../resources/css/main.css" rel="stylesheet"
-	th:href="@{/resources/css/main.css}" />
+		th:href="@{/resources/css/main.css}" />
 
 	<link href="../resources/css/bootstrap.css" rel="stylesheet"
 		th:href="@{/resources/css/bootstrap.css}" />
@@ -43,20 +44,19 @@
 
 	<div id="home-footer"
 		th:replace="~{/fragments/app-fragments :: copyright}">Footer</div>
-		
+
 	<th:block id="js-resources">
-	
-	
-	<!-- Bootstrap core JavaScript
+
+
+		<!-- Bootstrap core JavaScript
 ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="resources/js/jquery-3.2.1.min.js"
-		th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
-	<script src="resources/js/bootstrap.js"
-		th:href="@{/resources/js/bootstrap.js}"></script>
-	
+		<script src="resources/js/jquery-3.2.1.min.js"
+			th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
+		<script src="resources/js/bootstrap.js"
+			th:href="@{/resources/js/bootstrap.js}"></script>
+
 	</th:block>
-			
+
 
 </body>
 </html>

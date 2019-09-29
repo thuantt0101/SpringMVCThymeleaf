@@ -17,10 +17,11 @@ public class CustomerConverter {
 		} else {
 			customer.setCreatedDate(DateUtil.getSysdate());
 		}
-		
+
 		customer.setFirstName(customerDTO.getFirstName());
 		customer.setLastName(customerDTO.getLastName());
 		customer.setEmail(customerDTO.getEmail());
+		customer.setBirthDay(customerDTO.getBirthDay());
 
 		return customer;
 	}
@@ -31,6 +32,7 @@ public class CustomerConverter {
 		customer.setLastName(customerDTO.getLastName());
 		customer.setEmail(customerDTO.getEmail());
 		customer.setCreatedDate(customerDTO.getCreatedDate());
+		customer.setBirthDay(customerDTO.getBirthDay());
 
 		return customer;
 	}
@@ -42,11 +44,11 @@ public class CustomerConverter {
 			customerDTO.setId(customer.getId());
 			customer.setCreatedDate(customer.getCreatedDate());
 		}
-		
+
 		customerDTO.setFirstName(customer.getFirstName());
 		customerDTO.setLastName(customer.getLastName());
 		customerDTO.setEmail(customer.getEmail());
-		
+		customerDTO.setBirthDay(customer.getBirthDay());
 
 		return customerDTO;
 	}
