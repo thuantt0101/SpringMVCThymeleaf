@@ -47,6 +47,7 @@ public class CustomerController {
 		return "danhmuc/customer/customer-form";
 	}
 
+	//edit
 	@GetMapping("/updateForm/{id}")
 	public String showFormForUpdate(@PathVariable("id") int theId, Model model) throws ResourceNotFoundException {
 		System.out.println("hello update form");
