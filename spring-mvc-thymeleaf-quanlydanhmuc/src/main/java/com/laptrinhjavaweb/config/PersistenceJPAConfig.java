@@ -39,18 +39,24 @@ public class PersistenceJPAConfig {
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		final LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
-		entityManagerFactoryBean.setDataSource(dataSource());
-		entityManagerFactoryBean.setPackagesToScan(new String[] { "com.laptrinhjavaweb.model" });
-
-		final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-		entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
-		entityManagerFactoryBean.setJpaProperties(additionalProperties());
-
-		return entityManagerFactoryBean;
+		final LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
+		// sau đó localContainerEntityManagerFactoryBean sẽ sinh ra EntityManagerFactory
+		// và từ EntityManagerFactory các EntityManager được tạo ra
+		// EntityManager cung cấp API chp phép nó quản lý các entity của application
+		// trong persistence context mà nó được liên kết tới.
+		localContainerEntityManagerFactoryBean.setDataSource(dataSource());
+		localContainerEntityManagerFactoryBean.setPackagesToScan(new String[] { "com.laptrinhjavaweb.model" });
+		localContainerEntityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter());
+		localContainerEntityManagerFactoryBean.setJpaProperties(jpaProperties());
+		return localContainerEntityManagerFactoryBean;
 	}
 
-	final Properties additionalProperties() {
+	@Bean
+	public HibernateJpaVendorAdapter jpaVendorAdapter() {
+		return new HibernateJpaVendorAdapter();
+	}
+
+	final Properties jpaProperties() {
 		final Properties hibernateProperties = new Properties();
 		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 		hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
@@ -63,7 +69,7 @@ public class PersistenceJPAConfig {
 	}
 
 	@Bean
-	public DataSource dataSource() {
+	public DataSource dataSource() { // database connection
 		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(env.getProperty("jdbc.driverClassName"));
 		dataSource.setUrl(env.getProperty("jdbc.url"));
@@ -85,7 +91,4 @@ public class PersistenceJPAConfig {
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
 	}
-
-	
-
 }

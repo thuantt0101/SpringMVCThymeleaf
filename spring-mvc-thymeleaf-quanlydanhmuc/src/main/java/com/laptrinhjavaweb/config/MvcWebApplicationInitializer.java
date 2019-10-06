@@ -5,10 +5,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class MvcWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	// db config
+	// registering spring security with war
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-//	      return null;
-		return new Class[] { PersistenceJPAConfig.class };
+		
+		return new Class[] { PersistenceJPAConfig.class,SecurityConfig.class };
 	}
 
 	@Override

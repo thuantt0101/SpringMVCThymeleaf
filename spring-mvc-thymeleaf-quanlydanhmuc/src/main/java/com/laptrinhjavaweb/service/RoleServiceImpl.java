@@ -3,6 +3,10 @@ package com.laptrinhjavaweb.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.StoredProcedureQuery;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +23,9 @@ public class RoleServiceImpl implements RoleService {
 
 	@Autowired
 	private RoleConverter roleConverter;
+	
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public List<RoleDTO> findAll() {
@@ -33,5 +40,22 @@ public class RoleServiceImpl implements RoleService {
 		}
 
 		return listRoleDTO;
+	}
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<RoleDTO> findAllByUsername(String username){		
+		StoredProcedureQuery findAllByUsername = em.createNamedStoredProcedureQuery("getAllRoleByUserName");
+		findAllByUsername.setParameter("Username", username);
+		findAllByUsername.execute();
+		List<Role> listRole = findAllByUsername.getResultList();
+		List<RoleDTO> list = new ArrayList<>();
+		for(Role role:listRole) {
+			RoleDTO roleDTo = new RoleDTO();
+			roleDTo = roleConverter.toDTO(role);
+			list.add(roleDTo);
+		}
+		
+		return list;		
 	}
 }

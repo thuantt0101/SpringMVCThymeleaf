@@ -14,6 +14,7 @@
 		<maven.compiler.source>8</maven.compiler.source>
 		<maven.compiler.target>8</maven.compiler.target>
 		<spring.version>5.0.3.RELEASE</spring.version>
+		<spring-security.version>5.0.6.RELEASE</spring-security.version>
 		<hibernate.version>5.2.17.Final</hibernate.version>
 		<hibernate.validator>5.4.1.Final</hibernate.validator>
 	</properties>
@@ -27,9 +28,20 @@
 		</dependency>
 
 		<!-- Spring ORM -->
+		<!-- the persistence Spring dependencies -->
+		<!-- This comes with Hibernate and JPA support – such as HibernateTemplate 
+			and JpaTemplate – as well as a few additional,persistence related dependencies: 
+			spring-jdbc and spring-tx. -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 
@@ -59,12 +71,25 @@
 			<version>5.1.47</version>
 		</dependency>
 
+		<!-- First, we need to add the thymeleaf-spring5 and the thymeleaf-extras-springsecurity5 
+			dependencies to integrate Thymeleaf with Spring Security -->
+
+		<!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5 -->
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
+			<version>3.0.4.RELEASE</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring5</artifactId>
 			<version>3.0.9.RELEASE</version>
 		</dependency>
+
+
+
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -79,6 +104,36 @@
 			<artifactId>jackson-core</artifactId>
 			<version>2.9.8</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<!-- spring-security-core -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
+		<!-- spring-security-web -->
+		<!-- This contains filters and related web security infrastructure enabling 
+			URL access control in a Servlet environment. -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>

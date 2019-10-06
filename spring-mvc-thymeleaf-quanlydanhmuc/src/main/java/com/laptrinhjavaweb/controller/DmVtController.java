@@ -3,6 +3,7 @@ package com.laptrinhjavaweb.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,8 @@ import com.laptrinhjavaweb.service.RoleService;
 @Controller
 @RequestMapping("dmvt")
 public class DmVtController {
+	
+	private static final Logger logger = Logger.getLogger(DmVtController.class);
 
 	@Autowired
 	private DmVtService dmVtService;
@@ -34,6 +37,8 @@ public class DmVtController {
 
 	@GetMapping("/list")
 	public String listDmVts(Model model) {
+		logger.error("This is Error message", new Exception("Testing"));
+		
 		System.out.println("findAll list of dmvt is called");
 		List<DmVtDTO> listDTO = new ArrayList<>();
 
@@ -53,6 +58,7 @@ public class DmVtController {
 
 	@GetMapping("/showForm")
 	public String showFormForAdd(Model theModel) {
+		logger.error("This is Error message", new Exception("Testing"));
 		DmVtDTO dmvtDTo = new DmVtDTO();
 		dmvtDTo.setId(-1);		
 		theModel.addAttribute("dmvt", dmvtDTo);
@@ -65,12 +71,14 @@ public class DmVtController {
 	// delete
 	@GetMapping("/delete/{id}")
 	public String deleteDmVt(@PathVariable("dmvt") DmVtDTO dmvtDTO) {
+		logger.error("This is Error message", new Exception("Testing"));
 		dmvtDTO = dmVtService.deleteById(dmvtDTO.getId());
 		return "redirect: /dmvt/list";
 	}
 
 	@PostMapping("/saveDmVt")
 	public String save(@ModelAttribute("dmvt") DmVtDTO dmvtDTO) {
+		logger.error("This is Error message", new Exception("Testing"));
 		System.out.println("save dmvt is called");
 		System.out.println(dmvtDTO.getMaNhVtId());
 		dmvtDTO = dmVtService.save(dmvtDTO);
@@ -79,6 +87,7 @@ public class DmVtController {
 
 	@GetMapping("/updateForm/{id}")
 	public String updateForm(@PathVariable("id") int theID, Model theModel) {
+		logger.error("This is Error message", new Exception("Testing"));
 		DmVtDTO dmvtDTO = new DmVtDTO();
 		dmvtDTO = dmVtService.findById(theID);
 		dmvtDTO = dmVtService.save(dmvtDTO);

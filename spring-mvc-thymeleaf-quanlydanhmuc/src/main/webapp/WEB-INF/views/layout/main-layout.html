@@ -13,39 +13,70 @@
 
 </head>
 <body>
+
 	<div class="container">
+		<!-- 		header -->
+		<header>
+			<!-- 			menu -->
+			<div class="row">
+				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+					<nav th:insert="${nav} ?: ~{}"></nav>
+				</div>
+
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+					<div style="float: right;">
+						<a class="navbar" th:href="@{/}"
+							th:text="${#httpServletRequest.remoteUser}" id="text-white">tranthanhthuan</a>
+					</div>
+				</div>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"
+					style="padding-top: 2px;">
+					<form th:action="@{/logout}" method="post" style="float: right;">
+						<button type="submit" class="btn btn-info btn-lg">
+							<span class="glyphicon glyphicon-log-out"></span>Log out
+						</button>
+					</form>
+
+				</div>
+			</div>
+		</header>
+
+
+
+
+
+
+
 
 		<div class="row pd-top-60">
+			<!-- 		search function -->
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"
 				th:insert="${search} ?: ~{}"></div>
+			<!-- 			export function -->
 			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"
 				th:insert="${export} ?: ~{}"></div>
 		</div>
 
-		<div class="row">
-			<nav th:insert="${nav} ?: ~{}">
-				<ul>
-					<li><a href="#">Page 1</a></li>
-					<li><a href="#">Page 2</a></li>
-				</ul>
-			</nav>
-		</div>
 
-		<div class="row pd-top-60" th:insert="${mainContent} ?: ~{}">
-
-			<h1>Page 1</h1>
-			<p>Main content of Page 1</p>
-
-		</div>
+		<!-- 	main content -->
+		<div class="row pd-top-60" th:insert="${mainContent} ?: ~{}"></div>
 
 
+		<!-- 		footer content -->
 		<div class="row pd-top-60">
 			<footer th:insert="${footer} ?: ~{}">
 				<p>Footer</p>
 			</footer>
-
 		</div>
+
+
+
 	</div>
+
+
+
+
+
 
 	<!-- Bootstrap core CSS- -->
 	<th:block th:replace="${jsResource} ?: ~{}"></th:block>

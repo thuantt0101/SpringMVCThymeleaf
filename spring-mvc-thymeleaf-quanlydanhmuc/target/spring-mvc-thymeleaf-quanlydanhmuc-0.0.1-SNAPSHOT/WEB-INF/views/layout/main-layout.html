@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	th:fragment="main-fragment(title,nav,mainContent,footer,cssResource,jsResource)">
+	th:fragment="main-fragment(title,nav,mainContent,footer,cssResource,jsResource,search,export)">
 <head>
 <meta charset="UTF-8">
 <title th:replace="${title}">Page 1 title</title>
@@ -15,6 +15,13 @@
 <body>
 	<div class="container">
 
+		<div class="row pd-top-60">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"
+				th:insert="${search} ?: ~{}"></div>
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"
+				th:insert="${export} ?: ~{}"></div>
+		</div>
+
 		<div class="row">
 			<nav th:insert="${nav} ?: ~{}">
 				<ul>
@@ -24,70 +31,21 @@
 			</nav>
 		</div>
 
-		<div class="row pd-top-30">
-			<article th:insert="${mainContent} ?: ~{}">
-				<h1>Page 1</h1>
-				<p>Main content of Page 1</p>
-			</article>
+		<div class="row pd-top-60" th:insert="${mainContent} ?: ~{}">
+
+			<h1>Page 1</h1>
+			<p>Main content of Page 1</p>
+
 		</div>
 
 
-		<div class="row">
+		<div class="row pd-top-60">
 			<footer th:insert="${footer} ?: ~{}">
 				<p>Footer</p>
 			</footer>
 
 		</div>
-
-
 	</div>
-
-
-	<script>
-		// Lấy đối tượng có id = id-button trong jQuery
-		// 	var object = $('#id-button');
-
-		// sự kiên onload trong jquery 
-		// 		$(document).ready(function(){ 
-		//     /*Nội dung bên trong*/
-		// });
-
-		// khi gặp những đoạn code nằm trong sự kiện onload thì tình biên dịch sẽ bỏ qua cho tới khi trang web load xong		
-
-		//var elements = $('.desc'): tìm tất cả các thẻ html có class ="desc"
-		//nếu bạn thực hiện thao tác gán (set) thì nó có tác dụng cho toàn bộ kết quả
-		//nếu bạn thực hiện thao tác lấy(get) thì nó có tác dụng cho kết quả đầu tiên.
-		//vì vậy trong trường hợp get vì vậy trong trường hợp get ta phải sử dụng vòng lặp trong từng phần tử.
-
-		// Truy vấn đối tượng : var element = $('.container');
-
-		// Gán CSS background màu đỏ
-		// $(element).css({
-		//     background : "red"
-		// });
-
-		$(document).ready(
-				function() {
-					$('.navbar a.dropdown-toggle').on(
-							//a.dropdown-toggle : thẻ a có class là dropdown-toggle ,.navbar : thẻ bao bộc bên ngoài là thẻ nav
-							'click',
-							function(e) {
-								var $el = $(this);
-								var $parent = $(this).offsetParent(
-										".dropdown-menu");
-								$(this).parent("li").toggleClass('open');
-								if (!$parent.parent().hasClass('nav')) {
-									$el.next().css({
-										"top" : $el[0].offsetTop,
-										"left" : $parent.outerWidth() - 4
-									});
-								}
-								$('.nav li.open').not($(this).parents("li"))
-										.removeClass("open");
-								return false;
-							});
-				});
-	</script>
 
 	<!-- Bootstrap core CSS- -->
 	<th:block th:replace="${jsResource} ?: ~{}"></th:block>

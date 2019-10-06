@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>registration user</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+<!-- Bootstrap core CSS -->
+<link href="../resources/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/resources/css/bootstrap.css}" />
+
+<link href="../resources/css/main.css" rel="stylesheet"
+	th:href="@{/resources/css/main.css}" />
+
+
+</head>
+<body>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+			<div class="col-xs-6 col-sm-6col-md-6 col-lg-6" id="form-edit">
+				<h1 style="text-align: center;">create user</h1>
+				<form th:action="@{/user/saveUser}" method="POST" role="form"
+					th:object="${user}">
+
+					<div class="form-group">
+						<label>username</label> <input type="text" class="form-control"
+							id="" placeholder="username" th:field="*{username}">
+					</div>
+					<div class="form-group">
+						<label>password</label> <input type="password"
+							class="form-control" id="" placeholder="password"
+							th:field="*{password}">
+					</div>
+
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="../resources/js/jquery-3.2.1.min.js"
+		th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
+	<script src="../resources/js/bootstrap.js"
+		th:href="@{/resources/js/bootstrap.js}"></script>
+</body>
+</html>

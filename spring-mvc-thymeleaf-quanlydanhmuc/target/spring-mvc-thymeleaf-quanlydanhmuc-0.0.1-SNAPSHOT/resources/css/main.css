@@ -2,12 +2,9 @@
     box-sizing: border-box;
 }
 
-header {
-	background-color: #666;
-	padding: 5px;
-	text-align: center;
-	font-size: 35px;
-	color: white;
+.header {
+	background-color: #25AFF3;
+	
 }
 
 section:after {
@@ -37,8 +34,8 @@ nav ul {
 	margin-top: 30px;
 }
 
-.pd-top-30{
-	padding-top: 30px;
+.pd-top-60{
+	padding-top: 60px;
 }
 
 @media (min-width: 767px) {

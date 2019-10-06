@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>test</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<link href="../resources/css/test.css" rel="stylesheet"
+	th:href="@{/resources/css/test.css}" />
+
+<!-- Bootstrap core CSS -->
+<link href="../resources/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/resources/css/bootstrap.css}" />
+</head>
+<body>
+
+
+<div class = "container">
+	hi! : <h1 th:text ="${#httpServletRequest.remoteUser}"></h1>
+	<br/>
+	principal : <h1 th:text = "${#httpServletRequest.getUserPrincipal()}"></h1>
+	<br/>
+	 is User in role: <h1 th:text = "${#httpServletRequest.isUserInRole('ROLE_ADMIN')}"></h1>
+</div>
+
+
+	<script src="./resources/js/test.js" th:href="@{/resources/js/test.js}"></script>
+
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<script src="./resources/js/jquery-3.2.1.min.js"
+		th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
+	<script src="./resources/js/main.js" th:href="@{/resources/js/main.js}"></script>
+	<script src="./resources/js/bootstrap.js"
+		th:href="@{/resources/js/bootstrap.js}"></script>
+
+</body>
+</html>

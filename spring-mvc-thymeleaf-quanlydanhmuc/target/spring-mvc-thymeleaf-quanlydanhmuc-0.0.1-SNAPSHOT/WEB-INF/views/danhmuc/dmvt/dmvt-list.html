@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{../views/layout/main-layout :: main-fragment(  
+                                                ~{::title},                                                                                               
+                                                 ~{:: #home-nav},  
+                                                  ~{:: #home-main-content},
+                                                  ~{:: #home-footer} ,
+                                                  ~{:: #css-resources} ,
+                                                  ~{:: #js-resources} , 
+                                                  ~{:: #search},
+                                                  ~{:: #export}                          
+                                               )}">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<th:block id="css-resources">
+
+	<link href="../resources/css/main.css" rel="stylesheet"
+		th:href="@{/resources/css/main.css}" />
+
+	<link href="../resources/css/bootstrap.css" rel="stylesheet"
+		th:href="@{/resources/css/bootstrap.css}" />
+</th:block>
+
+</head>
+<body>
+	<div id="search">
+		<input type="search" id="txtSearch" onkeyup="filter()"
+			class="form-control" value="" title="searching customer"
+			placeholder="searching...." />
+	</div>
+
+	<div id="export">
+		<button type="button" class="btn btn-success"
+			onClick="exportTableToExcel('tblListData','customerList')">Export</button>
+	</div>
+
+	<div id="home-nav"
+		th:replace="~{../views/fragments/app-fragments :: nav-advance-v2}">Home
+		Nav</div>
+
+	<div id="home-main-content">
+
+		<table class="table table-striped table-hover" id="tblListData"
+			th:object="${dmvts}">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>mã vật tư</th>
+					<th>tên vật tư</th>
+					<th>đơn vị tính 1</th>
+					<th>mã nhóm vt</th>
+					<th>edit</th>
+					<th>delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dmvt:${dmvts}">
+					<td th:text="${dmvt.id}"></td>
+					<td th:text="${dmvt.maVt}"></td>
+					<td th:text="${dmvt.tenVt}"></td>
+					<td th:text="${dmvt.dvt1}"></td>
+					<td th:text="${dmvt.maNhVtId}"></td>
+					<td><a class="btn btn-warning"
+						th:href="@{/dmvt/updateForm/{id}(id=${dmvt.id})}">edit</a></td>
+					<td><a class="btn btn-danger"
+						th:href="@{/dmvt/delete/{id}(id=${dmvt.id})}">delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-primary" th:href="@{/dmvt/showForm}">Thêm</a>
+
+	</div>
+
+	<div class="row" id="home-footer"
+		th:replace="~{/fragments/app-fragments :: copyright}">Footer</div>
+	<th:block id="js-resources">
+
+		<!-- Bootstrap core JavaScript
+================================================== -->
+		<script src="../resources/js/jquery-3.2.1.min.js"
+			th:href="@{/resources/js/jquery-3.2.1.min.js}"></script>
+		<script src="../resources/js/main.js"
+			th:href="@{/resources/js/main.js}"></script>
+		<script src="../resources/js/bootstrap.js"
+			th:href="@{/resources/js/bootstrap.js}"></script>
+	</th:block>
+
+</body>
+</html>
